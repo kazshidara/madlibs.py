@@ -55,13 +55,20 @@ def show_madlib_form():
 
 @app.route('/madlib')
 def show_madlib():
+
+    madlibs_list = ["madlib.html", "madlib2.html"]
+    random_lst = choice(madlibs_list)
+
     person_name = request.args.get("people")
     choice_color = request.args.get("color")
     choice_noun = request.args.get("noun")
     choice_adjective = request.args.get("adjective")
+    choice_noun_2 = request.args.get("noun2")
+    choice_verb = request.args.get("verb")
 
-    return render_template("madlib.html", color=choice_color, noun=choice_noun,
-                           person=person_name, adjective=choice_adjective)
+    return render_template(random_lst, color=choice_color, noun=choice_noun,
+                           person=person_name, adjective=choice_adjective, 
+                           noun2=choice_noun_2, verb=choice_verb)
 
 if __name__ == '__main__':
     # Setting debug=True gives us error messages in the browser and also
